@@ -19,7 +19,7 @@ spec:
         run: nginx
     spec:
       containers:
-      - image: nginx
+      - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridapi:latest
         name: nginx
         resources: {}
 status: {}
