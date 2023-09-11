@@ -18,6 +18,8 @@ spec:
       labels:
         run: nginx
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
       - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridapi:latest
         name: nginx
