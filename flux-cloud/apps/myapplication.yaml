@@ -21,7 +21,7 @@ spec:
       imagePullSecrets:
       - name: regcred
       containers:
-      - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridapi:ver1
+      - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridapi:latest
         name: nginx
         ports:
         - name: http
