@@ -21,10 +21,19 @@ spec:
       imagePullSecrets:
       - name: regcred
       containers:
-      - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridapi:latest
+      - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridapi:ver1
         name: nginx
         ports:
         - name: http
           containerPort: 80
         resources: {}
+        volumeMounts:
+          - name: azurefile
+            mountPath: /myfileshare
+      volumes:
+        - name: azurefile
+          azureFile:
+            secretName: storage-secret
+            shareName: patshareName
+            readOnly: false
 status: {}
