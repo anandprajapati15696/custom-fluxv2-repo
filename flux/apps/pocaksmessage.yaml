@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
-  namespace: default
+  namespace: nginx
   labels:
     run: pochaakshybridmessageprocessor
   name: pochaakshybridmessageprocessor
