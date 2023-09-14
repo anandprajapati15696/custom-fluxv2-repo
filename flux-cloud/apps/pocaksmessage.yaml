@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  namespace: nginx
+  labels:
+    run: pochaakshybridmessageprocessor
+  name: pochaakshybridmessageprocessor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: pochaakshybridmessageprocessor
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: pochaakshybridmessageprocessor
+    spec:
+      containers:
+      - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridmessageprocessor:ver1
+        name: pochaakshybridmessageprocessor
+        resources: {}
+        volumeMounts:
+            - name: azurefile
+              mountPath: /myfileshare
+      volumes:
+        - name: azurefile
+          azureFile:
+            secretName: storage-secret
+            shareName: patshareName
+            readOnly: false
