@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  namespace: default
+  labels:
+    run: pochaakshybridmessageprocessor
+  name: pochaakshybridmessageprocessor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: pochaakshybridmessageprocessor
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: pochaakshybridmessageprocessor
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: pochaakshybridapi20230911101608.azurecr.io/pochaakshybridmessageprocessor:ver1
+        name: pochaakshybridmessageprocessor
+        resources: {}
+        volumeMounts:  
+        - name: nfs-volume
+          mountPath: /myfileshare
+      volumes:
+        - name: nfs-volume
+          nfs:
+            server: 192.168.0.201
+            path: /pathdata
